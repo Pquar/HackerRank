@@ -19,18 +19,20 @@ class Result {
      */
     public static void miniMaxSum(List<Integer> arr) {
         // Write your code here
-        int max=0, min=0;
-        int sumEverything = arr.stream().reduce(0,(total, element)->total+element);
-        for(int i =0; i<arr.size();i++){
-            min=sumEverything;
-            if(min>(sumEverything-arr.get(i))){
-                min=sumEverything-arr.get(i);
+        long minNumber = 0, maxNumber = 0, sum = 0;
+        minNumber= arr.get(0);
+
+        for (int i = 0; i < arr.size(); i++) {
+            sum += arr.get(i);
+            if (arr.get(i) < minNumber) {
+                minNumber = arr.get(i);
             }
-            if(max<(sumEverything-arr.get(i))){
-                max=sumEverything-arr.get(i);
+            if (arr.get(i) > maxNumber) {
+                maxNumber = arr.get(i);
             }
         }
-        System.out.println(min+" "+max);
+
+        System.out.print((sum - maxNumber) + " " + (sum - minNumber));
     }
 
 }
